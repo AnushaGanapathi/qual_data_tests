@@ -36,6 +36,7 @@ def fetch_unclassified(conn):
         SELECT response_id, response_text
         FROM {SCHEMA}.{TABLE}
         WHERE theme_extracted IS NULL
+           OR trim(theme_extracted) = ''
     """
     return pd.read_sql(query, conn)
 
